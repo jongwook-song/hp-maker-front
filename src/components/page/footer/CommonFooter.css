@@ -1,0 +1,27 @@
+.CommonFooterContaier{
+    display: block;
+    margin: 0px 20px;
+}
+
+.CommonFooterContaier .CommonFooterContent{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%
+}
+
+.CommonFooterContaier .CommonFooterContent.Left{
+    justify-content: flex-start;
+}
+
+.CommonFooterContaier .CommonFooterContent.Center{
+    justify-content: center;
+}
+
+.CommonFooterContaier .CommonFooterContent.Right{
+    justify-content: flex-end;
+}
+
+.CommonFooterContaier .CommonFooterContent.Right .fotterBtn{
+    margin: 0px 10px;
+}

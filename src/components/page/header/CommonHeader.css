@@ -1,0 +1,27 @@
+.CommonHeaderContaier{
+    display: block;
+    margin: 0px 20px;
+}
+
+.CommonHeaderContaier .CommonHeaderContent{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%
+}
+
+.CommonHeaderContent span{
+    margin: 0px 10px;
+}
+
+.CommonHeaderContaier .CommonHeaderContent.Left{
+    justify-content: flex-start;
+}
+
+.CommonHeaderContaier .CommonHeaderContent.Center{
+    justify-content: center;
+}
+
+.CommonHeaderContaier .CommonHeaderContent.Right{
+    justify-content: flex-end;
+}
