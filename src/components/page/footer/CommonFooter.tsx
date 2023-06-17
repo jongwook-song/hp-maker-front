@@ -14,7 +14,7 @@ interface CommonFooterProps {
 const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로 빼서 적용
     const navigate = useNavigate();
 
-    const onClickFooterMenu = ( type : string, menuData : any) => {
+    const onClickFooterMenu = ( type : string, menuData : any) => { // menuData : {name: '등록', type: 'buttonRegister', className: 'footerBtn submit'}
         if( type === 'menu'){
             return onClickMenu( menuData);
         }
@@ -23,12 +23,40 @@ const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로
             return onClickButtonLink( menuData);
         }
 
+        if( type === 'buttonRegister'){
+            return onClickRegister( menuData);
+        }
+
+        if( type === 'submit'){
+            return onClickSubmit( menuData);
+        }
+
+        if( type === 'cancle'){
+            return onClickCancle( menuData);
+        }
+
         return null;
+    }
+
+    const onClickSubmit = ( menuData : any) => {
+        console.log( 'onClickSubmit : ', menuData, props.footerData);
+    }
+
+    const onClickCancle = ( menuData : any) => {
+        console.log( 'onClickCancle : ' , menuData, props.footerData);
     }
 
     const onClickMenu = ( menuData : any) => {  // 추후 CommonFnUtil로 빼서 적용 시 사라질 예정
         console.log( 'onClickMenu');
         console.log( menuData);
+    }
+
+    const onClickRegister = ( menuData : any) => {
+        console.log( 'onClickMenu');
+        console.log( menuData);
+        if( CommonUtil.objectIsNotNull( props.footerData) && CommonUtil.objectIsNotNull( props.footerData.setModalInfo)){
+            props.footerData.setModalInfo( { menuType : menuData.type, menuName : menuData.name});
+        }
     }
 
     const onClickButtonLink = ( menuData : any) => {  // 추후 CommonFnUtil로 빼서 적용 시 사라질 예정

@@ -28,9 +28,8 @@ const CommonHeader = (props: CommonHeaderProps) => {
             return onClickButtonLink( menuData);
         }
 
-        if( type === 'popover'){
-
-            // return onClickPopover( menuData);
+        if( type === 'modalClose'){
+            return onClickModalClose( menuData);
         }
 
         return null;
@@ -50,6 +49,10 @@ const CommonHeader = (props: CommonHeaderProps) => {
         if( CommonUtil.objectIsNotNull( menuData.link)){
             navigate(menuData.link);
         }
+    }
+
+    const onClickModalClose = ( menuData : any) => {
+        menuData.clickEvent();
     }
 
     const renderHeaderContent = ( key : string) => {

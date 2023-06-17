@@ -1,0 +1,30 @@
+/* RegisterContent.tsx */
+
+.RegisterContentContainer {
+    display: flex;
+}
+
+.RegisterContentContainer .RegisterContentContainerLeft {
+    width: 30%
+}
+
+.RegisterContentContainer .RegisterContentContainerRight {
+    width: 100%
+}
+
+.SiteRegisterContentContainer .SiteRegisterContentContent .InfoContent {
+    display: flex;
+    width: 100%;
+}
+
+.SiteRegisterContentContainer .SiteRegisterContentContent .InfoContent .InfoTitle{
+    width: 30%;
+}
+
+.SiteRegisterContentContainer .SiteRegisterContentContent .InfoContent .InfoValueContent{
+    width: 70%;
+}
+
+.SiteRegisterContentContainer .SiteRegisterContentContent .InfoContent .InfoValueContent input{
+    width: 100%;
+}

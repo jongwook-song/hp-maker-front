@@ -13,7 +13,7 @@ const clickMenu : any = {
 const clickMenuInfos : any = {
     'add' : { name : '추가', iconName : 'add'},
     'eidt' : { name : '편집', iconName : 'eidt'},
-    'setting' : { name : '관리', iconName : 'eidt'},
+    'setting' : { name : '관리', iconName : 'setting'},
 }
 
 interface PopoverMenuProps {
@@ -23,9 +23,9 @@ interface PopoverMenuProps {
 export const PopoverMenu = (props : PopoverMenuProps) => {
     const popoverRef = useRef<HTMLDivElement>(null);
 
-    const [isShow, setIsShow] = useState( false);
-    const [eventTarget, setEventTarget] = useState( null);
-    const [modalInfo, setModalInfo] = useState<any | null>( null);
+    const [ isShow, setIsShow] = useState( false);
+    const [ eventTarget, setEventTarget] = useState( null);
+    const [ modalInfo, setModalInfo] = useState<any | null>( null);
 
 
     const onClickPopover = ( event : any) => {
@@ -42,7 +42,7 @@ export const PopoverMenu = (props : PopoverMenuProps) => {
 
     const onClickMenu = ( menuType : string, menuName : string) => {
         onClickClose();
-        setModalInfo( {menuType : menuType, menuName : menuName});
+        setModalInfo( { menuType : menuType, menuName : menuName});
     }
 
     const closeModal = () => {
@@ -61,19 +61,19 @@ export const PopoverMenu = (props : PopoverMenuProps) => {
         <div ref={popoverRef} key={props.menuData.name}>
             <span onClick={onClickPopover}>{props.menuData.name}</span>
             <Overlay
-                show={isShow}
-                target={eventTarget}
+                show={ isShow}
+                target={ eventTarget}
                 placement="bottom"
-                container={popoverRef.current}
-                containerPadding={20}
-                rootClose={true}
-                onHide={onClickClose}
+                container={ popoverRef.current}
+                containerPadding={ 20}
+                rootClose={ true}
+                onHide={ onClickClose}
             >
                 <Popover id="popover-contained">
                     <PopoverBody>
-                        { CommonUtil.objectIsNotNull(clickMenu[props.menuData.className]) && 
+                        { CommonUtil.objectIsNotNull( clickMenu[ props.menuData.className]) && 
                             <>
-                                { clickMenu[props.menuData.className].map(( menuName : string) => {
+                                { clickMenu[ props.menuData.className].map(( menuName : string) => {
                                     return renderPopoverBody( props.menuData.className, menuName);
                                  })
                                 }
@@ -83,8 +83,8 @@ export const PopoverMenu = (props : PopoverMenuProps) => {
                 </Popover>
             </Overlay>
             <ModalIndex
-                modalInfo={modalInfo}
-                closeModal={closeModal}
+                modalInfo={ modalInfo}
+                closeModal={ closeModal}
             />
         </div>
     )

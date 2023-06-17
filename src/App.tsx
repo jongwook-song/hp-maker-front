@@ -1,6 +1,11 @@
 import React from 'react';
-import './App.css';
+
+import Modal from 'react-modal';
+
 import AppRoute from './AppRoute';
+import './App.css';
+
+
 
 function App() {
   return (
@@ -11,3 +16,4 @@ function App() {
 }
 
 export default App;
+Modal.setAppElement('#root')
