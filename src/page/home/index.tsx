@@ -6,7 +6,9 @@ import CommonHeader from 'components/page/header/CommonHeader';
 import DefaultListItem from 'components/page/contents/list/DefaultListItem';
 import CommonFooter from 'components/page/footer/CommonFooter';
 
-import ModalIndex from 'components/page/contents/modal'
+import ModalIndex from 'components/page/contents/modal';
+
+import 'page/home/home.css';
 
 const headerMenuDatas = {
     Left: [
@@ -29,16 +31,17 @@ const footerMenuDatas = {
 const contentsName = 'HomePage';
 
 const HomePage = () => {
-    const [ modalInfo, setModalInfo] = useState<any | null>( null);
+    const [ modalInfo, setModalInfo] = useState< any | null>( null);
+    const [ sitesList, setSitesList] = useState< any>( []);
 
     useLayoutEffect(() => {
         (async () => {
-            const sitesList = await CommonFnUtil.getSitesList();
-            console.log( 'useLayoutEffect sitesList : ', sitesList);
+            const dataList = await CommonFnUtil.getSitesList();
+            if( JSON.stringify( dataList) !== JSON.stringify( sitesList)){
+                setSitesList( dataList);
+            }
         })();
-
-        console.log('useLayoutEffect count');
-    }, []);
+    }, [ sitesList]);
 
     const closeModal = () => {
         setModalInfo( null);
@@ -48,22 +51,25 @@ const HomePage = () => {
         <div className='HomePageContainer'>
             <div className='HomePageContent'>
                 <CommonHeader
-                    contentsName={contentsName}
-                    headerMenu={headerMenuDatas}
-                    headerData={null}
+                    contentsName={ contentsName}
+                    headerMenu={ headerMenuDatas}
+                    headerData={ null}
                 />
-                <DefaultListItem />
+                <DefaultListItem 
+                    contextName={ contentsName}
+                    listData={ sitesList}
+                />
                 <CommonFooter
-                    contentsName={contentsName}
-                    footerMenu={footerMenuDatas}
+                    contentsName={ contentsName}
+                    footerMenu={ footerMenuDatas}
                     footerData={{
                         setModalInfo : setModalInfo
                     }}
                 />
             </div>
             <ModalIndex
-                modalInfo={modalInfo}
-                closeModal={closeModal}
+                modalInfo={ modalInfo}
+                closeModal={ closeModal}
             />
         </div>
     );

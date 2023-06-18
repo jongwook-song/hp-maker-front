@@ -1,0 +1,32 @@
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem {
+    display: flex;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 5px 0px;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem.title {
+    border-top: 2px solid;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem .id{
+    min-width: 80px;
+    width: auto;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem .title{
+    width: 100%;
+    text-align: start;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem .title.center{
+    text-align: center;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem .modifiedTarget{
+    width: 80px;
+}
+
+.DefaultListImteContainer .DefaultListImteContent .DefaultListImteContentItem .menu{
+    width: 80px;
+}

@@ -22,9 +22,8 @@ const SiteRegisterContent = ( props : SiteRegisterContentProps) => {
                     {listInfo.name}
                 </div>
                 <div className="InfoValueContent">
-                    <input id={listInfo.id + index} type="text" 
+                    <input id={listInfo.id + '-' + index} type="text" 
                             ref={ (ref) => { 
-                                console.log( 'ref : ', ref);
                                 inputRefArray.current[index] = ref;
                             }} // took this from your guide's example.
                     />

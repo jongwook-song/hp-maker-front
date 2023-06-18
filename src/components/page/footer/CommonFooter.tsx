@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 import CommonUtil from 'util/CommonUtil';
+import CommonFnUtil from 'util/CommonFnUtil';
 
 import 'components/page/footer/CommonFooter.css'
 
@@ -38,8 +39,23 @@ const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로
         return null;
     }
 
-    const onClickSubmit = ( menuData : any) => {
-        console.log( 'onClickSubmit : ', menuData, props.footerData);
+    const onClickSubmit = async( menuData : any) => {
+        const data : any = {}
+        let returnValue : any = null;
+
+        if( CommonUtil.objectIsNotNull( props.footerData.refArray) && CommonUtil.objectIsNotNull( props.footerData.refArray.current)){
+            for( let i=0; i<props.footerData.refArray.current.length; i++){
+                data[props.footerData.refArray.current[i].id.substring(0, props.footerData.refArray.current[i].id.indexOf('-'))] = props.footerData.refArray.current[i].value;
+            }
+        }
+
+        if( CommonUtil.objectIsNotNull( data)){
+            returnValue = await CommonFnUtil.saveSite( data);
+            console.log( returnValue);
+        }
+        else {
+            console.log( '데이터에 문제 발생');
+        }
     }
 
     const onClickCancle = ( menuData : any) => {
