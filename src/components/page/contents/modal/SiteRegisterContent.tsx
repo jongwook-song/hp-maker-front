@@ -33,8 +33,7 @@ const SiteRegisterContent = ( props : SiteRegisterContentProps) => {
     }
 
     useEffect(() => {
-        if( CommonUtil.objectIsNotNull( props) && CommonUtil.objectIsNotNull( props.setRefArrayInfo)){
-            console.log(inputRefArray);
+        if( CommonUtil.objectIsNotNull( props) && CommonUtil.objectIsNotNull( props.setRefArrayInfo)){console.log(inputRefArray);
             props.setRefArrayInfo( inputRefArray);
         }
     }, [ inputRefArray, props])

@@ -11,10 +11,10 @@ interface AxdiosData {
 
 export default class CommonFnUtil {
     public static getSitesList = async() => {
-        let returnValue = null;
+        let returnValue : any = null;
 
         const data : AxdiosData = {
-            url : '/site/findAll',
+            url : '/site/findIsNotDelete',
             data : null
         }
 
@@ -28,7 +28,7 @@ export default class CommonFnUtil {
     }
 
     public static saveSite = async( saveSiteData : any) => {
-        let returnValue = null;
+        let returnValue : any = {};
 
         const data : AxdiosData = {
             url : '/site/saveSite',
@@ -38,7 +38,8 @@ export default class CommonFnUtil {
         await Adapter.fetch.post(data).then((res) => {
             returnValue = res;
         }).catch((error) => {
-            returnValue = error;
+            returnValue.type = 'error';
+            returnValue.info = error;
         })
 
         return returnValue;        

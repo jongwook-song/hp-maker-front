@@ -33,7 +33,7 @@ const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로
         }
 
         if( type === 'cancle'){
-            return onClickCancle( menuData);
+            return onClickCancle();
         }
 
         return null;
@@ -51,15 +51,20 @@ const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로
 
         if( CommonUtil.objectIsNotNull( data)){
             returnValue = await CommonFnUtil.saveSite( data);
-            console.log( returnValue);
+            if( CommonUtil.objectIsNotNull( returnValue.type)){
+                props.footerData.setModalInfo( null);
+            }
+            else{
+                console.log( returnValue.info);
+            }
         }
         else {
             console.log( '데이터에 문제 발생');
         }
     }
 
-    const onClickCancle = ( menuData : any) => {
-        console.log( 'onClickCancle : ' , menuData, props.footerData);
+    const onClickCancle = () => {
+        props.footerData.setModalInfo( null);
     }
 
     const onClickMenu = ( menuData : any) => {  // 추후 CommonFnUtil로 빼서 적용 시 사라질 예정
@@ -68,8 +73,6 @@ const CommonFooter = (props : CommonFooterProps) => {  // 추후 CommonFnUtil로
     }
 
     const onClickRegister = ( menuData : any) => {
-        console.log( 'onClickMenu');
-        console.log( menuData);
         if( CommonUtil.objectIsNotNull( props.footerData) && CommonUtil.objectIsNotNull( props.footerData.setModalInfo)){
             props.footerData.setModalInfo( { menuType : menuData.type, menuName : menuData.name});
         }
