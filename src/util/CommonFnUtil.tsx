@@ -21,7 +21,9 @@ export default class CommonFnUtil {
         await Adapter.fetch.post(data).then((res) => {
             returnValue = res;
         }).catch((error) => {
-            console.error(error)
+            // console.error(error)
+            returnValue.type = 'error';
+            returnValue.info = error;
         })
 
         return returnValue;        
@@ -38,10 +40,30 @@ export default class CommonFnUtil {
         await Adapter.fetch.post(data).then((res) => {
             returnValue = res;
         }).catch((error) => {
+            // console.error(error)
             returnValue.type = 'error';
             returnValue.info = error;
         })
 
-        return returnValue;        
+        return returnValue;
+    }
+
+    public static getSiteDetail = async( siteId : number) => {
+        let returnValue : any = {};
+
+        const data : AxdiosData = {
+            url : '/siteDetail/findSiteDetail',
+            data : { siteId : siteId}
+        }
+
+        await Adapter.fetch.post(data).then((res) => {
+            returnValue = res;
+        }).catch((error) => {
+            // console.error(error)
+            returnValue.type = 'error';
+            returnValue.info = error;
+        })
+
+        return returnValue;
     }
 }
